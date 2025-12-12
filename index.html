@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Über mich – Eldi Syla</title>
+
+  <style>
+    :root{
+      --bg1:#070A12;
+      --bg2:#0B1530;
+      --card: rgba(255,255,255,.08);
+      --card2: rgba(255,255,255,.05);
+      --border: rgba(255,255,255,.14);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 20px;
+    }
+    
+
+    *{ box-sizing: border-box; }
+    body{
+      margin:0;
+      min-height:100vh;
+      color:var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(1200px 600px at 15% 10%, rgba(120, 90, 255,.35), transparent 60%),
+        radial-gradient(900px 500px at 90% 20%, rgba(0, 220, 255,.28), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+    }
+
+    .wrap{
+      width:min(1100px, 92vw);
+      margin: 40px auto 80px;
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding: 14px 18px;
+      border-radius: 999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(12px);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .logo{
+      width:38px;
+      height:38px;
+      border-radius:14px;
+      background: linear-gradient(135deg, #7b5cff, #00dcff);
+    }
+
+    nav a{
+      text-decoration:none;
+      color:var(--muted);
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:13px;
+    }
+    nav a:hover{
+      color:var(--text);
+      background: rgba(255,255,255,.08);
+    }
+
+    .hero{
+      margin-top:30px;
+      display:grid;
+      grid-template-columns: 1.4fr .9fr;
+      gap:20px;
+    }
+
+    .card{
+      background: linear-gradient(180deg, var(--card), var(--card2));
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .pad{ padding:26px; }
+
+    h1{
+      margin:0 0 14px;
+      font-size:clamp(30px,3.5vw,44px);
+      line-height:1.15;
+    }
+
+    .lead{
+      color:var(--muted);
+      font-size:15px;
+      max-width:60ch;
+    }
+
+    .chips{
+      margin-top:20px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .chip{
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:12px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.14);
+    }
+
+    .profile{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    .avatar{
+      width:70px;
+      height:70px;
+      border-radius:20px;
+      background: linear-gradient(135deg, #ff7a4a, #7b5cff);
+    }
+
+    .meta{
+      display:grid;
+      gap:10px;
+    }
+
+    .metaRow{
+      display:flex;
+      justify-content:space-between;
+      padding:10px 12px;
+      border-radius:14px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.12);
+      font-size:13px;
+    }
+
+    .grid{
+      margin-top:26px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:18px;
+    }
+
+    .col-7{ grid-column: span 7; }
+    .col-5{ grid-column: span 5; }
+    .col-6{ grid-column: span 6; }
+    .col-12{ grid-column: span 12; }
+
+    h2{
+      margin:0 0 10px;
+      font-size:18px;
+    }
+
+    .text{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .list{
+      list-style:none;
+      padding:0;
+      margin:14px 0 0;
+      display:grid;
+      gap:10px;
+    }
+
+    .item{
+      display:flex;
+      gap:12px;
+      padding:12px;
+      border-radius:16px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.12);
+    }
+
+    .icon{
+      width:34px;
+      height:34px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:rgba(255,255,255,.08);
+    }
+
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .pill{
+      padding:10px 12px;
+      border-radius:999px;
+      font-size:13px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.14);
+    }
+
+    .footer{
+      margin-top:30px;
+      text-align:center;
+      font-size:12px;
+      color:rgba(255,255,255,.55);
+    }
+
+    @media(max-width:900px){
+      .hero{ grid-template-columns:1fr; }
+      .col-7,.col-5,.col-6{ grid-column: span 12; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header>
+      <div class="brand">
+        <div class="logo"></div>
+        <strong>Eldi Syla</strong>
+      </div>
+      <nav>
+        <a href="#ueber">Über mich</a>
+        <a href="#skills">Skills</a>
+        <a href="#ziele">Ziele</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="ueber">
+      <div class="card">
+        <div class="pad">
+          <h1>Hallo, ich bin Eldi Syla.<br>Informatiker Applikationsentwicklung.</h1>
+          <p class="lead">
+            Ich bin Lernender im Bereich Applikationsentwicklung und interessiere mich besonders
+            für moderne Webanwendungen, saubere Code-Strukturen und durchdachte Benutzeroberflächen.
+          </p>
+
+          <div class="chips">
+            <span class="chip">HTML · CSS · JavaScript</span>
+            <span class="chip">React</span>
+            <span class="chip">Java & Spring Boot</span>
+            <span class="chip">Datenbanken</span>
+            <span class="chip">Teamarbeit</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card">
+        <div class="pad profile">
+          <div style="display:flex; gap:14px; align-items:center;">
+            <div class="avatar"></div>
+            <div>
+              <strong>Eldi Syla</strong><br>
+              <span style="color:var(--muted); font-size:13px;">Applikationsentwickler · Lernender</span>
+            </div>
+          </div>
+
+          <div class="meta">
+            <div class="metaRow"><span>Standort</span><span>Schweiz</span></div>
+            <div class="metaRow"><span>Fokus</span><span>Web & Backend</span></div>
+            <div class="metaRow"><span>Aktuell</span><span>Lernen & Projekte</span></div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="grid">
+      <div class="card col-7">
+        <div class="pad">
+          <h2>Was mich ausmacht</h2>
+          <p class="text">
+            Ich arbeite strukturiert, lerne schnell Neues und lege grossen Wert auf saubere
+            Lösungen, die langfristig verständlich bleiben.
+          </p>
+
+          <ul class="list">
+            <li class="item">
+              <div class="icon">🧠</div>
+              <div>
+                <strong>Analytisches Denken</strong><br>
+                <span class="text">Probleme logisch zerlegen und gezielt lösen.</span>
+              </div>
+            </li>
+            <li class="item">
+              <div class="icon">⚡</div>
+              <div>
+                <strong>Motivation</strong><br>
+                <span class="text">Hohe Lernbereitschaft und Eigeninitiative.</span>
+              </div>
+            </li>
+            <li class="item">
+              <div class="icon">🤝</div>
+              <div>
+                <strong>Teamfähigkeit</strong><br>
+                <span class="text">Klar kommunizieren und gemeinsam Lösungen finden.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card col-5" id="skills">
+        <div class="pad">
+          <h2>Skills</h2>
+          <div class="skills">
+            <span class="pill">HTML</span>
+            <span class="pill">CSS</span>
+            <span class="pill">JavaScript</span>
+            <span class="pill">TypeScript</span>
+            <span class="pill">React</span>
+            <span class="pill">Java</span>
+            <span class="pill">Spring Boot</span>
+            <span class="pill">SQL</span>
+            <span class="pill">Git</span>
+            <span class="pill">Docker</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card col-12" id="ziele">
+        <div class="pad">
+          <h2>Ziele</h2>
+          <p class="text">
+            Mein Ziel ist es, mich fachlich stetig weiterzuentwickeln, Verantwortung in Projekten
+            zu übernehmen und qualitativ hochwertige Software zu entwickeln.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      © <span id="year"></span> · Eldi Syla
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
