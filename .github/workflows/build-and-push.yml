@@ -29,7 +29,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.TOKEN }}
 
       - name: Build & Push
         uses: docker/build-push-action@v6
@@ -40,3 +40,25 @@ jobs:
           tags: |
             ${{ env.REGISTRY }}/eldi-syla/m210-6.2/${{ env.IMAGE_NAME }}:latest
             ${{ env.REGISTRY }}/eldi-syla/m210-6.2/${{ env.IMAGE_NAME }}:${{ github.sha }}
+
+      - name: Install OC CLI
+        run: |
+          curl -s https://downloads-openshift-console.apps.exoscale-ch-gva-2-0.appuio.cloud/amd64/linux/oc.tar \
+          | tar xvf - --exclude="*.md" -C /usr/local/bin/
+
+      - name: OpenShift Login
+        run: |
+          oc login "${{ secrets.OPENSHIFT_SERVER }}" --token="${{ secrets.OPENSHIFT_TOKEN }}"
+ 
+      - name: Select Namespace
+        run: |
+          oc project "${{ secrets.OPENSHIFT_NAMESPACE }}"
+ 
+      - name: Patch Deployment Image
+        run: |
+          oc set image deployment/html-openshift-app \
+          html-openshift-app=ghcr.io/${{ secrets.GHCR_USERNAME }}/html-openshift-app:latest
+
+      - name: Rollout Restart
+        run: |
+          oc rollout restart deployment/html-openshift-app
