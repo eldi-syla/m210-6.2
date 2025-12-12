@@ -38,5 +38,5 @@ jobs:
           file: ./DOCKERFILE
           push: true
           tags: |
-            ${{ env.REGISTRY }}/eldi-syla/6.2/${{ env.IMAGE_NAME }}:latest
-            ${{ env.REGISTRY }}/eldi-syla/6.2/${{ env.IMAGE_NAME }}:${{ github.sha }}
+            ${{ env.REGISTRY }}/eldi-syla/m210-6.2/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/eldi-syla/m210-6.2/${{ env.IMAGE_NAME }}:${{ github.sha }}
