@@ -57,7 +57,7 @@ jobs:
       - name: Patch Deployment Image (use SHA tag)
         run: |
           oc set image deployment/html-openshift-app \
-            html-openshift-app=ghcr.io/eldi-syla/m210-6.2/html-openshift-app:${{ github.sha }
+          html-openshift-app=ghcr.io/eldi-syla/m210-6.2/html-openshift-app:${{ github.sha }
 
       - name: Rollout Restart
         run: |
